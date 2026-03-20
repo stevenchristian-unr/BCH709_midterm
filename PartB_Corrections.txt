@@ -1,0 +1,6 @@
+1. The interpreter stops before any code runs. Remove line 59 which is a extra space.
+2. filter_by_length() compares len(seq) to a string and crashes. It should parse the CLI argument as an integer before filtering.
+3. In parse_fasta(), each new sequence line replaces the previous one, so gene1 becomes only TTTGGGCCCAAA and gene3 becomes only its last line. It should append sequence lines until the next header.
+4. Output uses gene1 chrI protein_coding instead of just gene1. It should use the first token after > as sequence_id.
+5. Gene2 reports 0.00 and gene4 reports 25.00 because only uppercase G and C are counted. It should treat uppercase and lowercase bases the same.
+Sequences exactly equal to the threshold are excluded. It should Include all sequences with length >= min_length, per the README.
